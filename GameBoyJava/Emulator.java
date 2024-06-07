@@ -24,16 +24,16 @@ public class Emulator {
 
     public Cartridge cart;
 
-    public void modify_flag(Emulator emu, Flag given_flag, int value) {
+    public void modify_flag(Flag given_flag, int value) {
         int flag = given_flag.getValue();
         
-        emu.AF.LeastSignificantByte &= ~(1 << flag);
-        emu.AF.LeastSignificantByte |= value << flag;
+        this.AF.LeastSignificantByte &= ~(1 << flag);
+        this.AF.LeastSignificantByte |= value << flag;
 
     }
 
-    public int getFlag(Emulator emu, Flag given_flag) {
+    public int getFlag(Flag given_flag) {
         int flag = given_flag.getValue();
-        return (emu.AF.LeastSignificantByte >> (flag + 4) & 1);
+        return (this.AF.LeastSignificantByte >> (flag + 4) & 1);
     }
 }
